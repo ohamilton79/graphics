@@ -1,0 +1,11 @@
+#version 330 core
+layout (location=0) in vec3 aPos;
+uniform mat4 transform;
+out vec3 vertexColour;
+void main()
+{
+
+vec4 transformedPos = transform * vec4(aPos.xyz, 1.0);
+gl_Position = transformedPos;
+vertexColour = vec3(abs(transformedPos.x), abs(transformedPos.y), abs(transformedPos.z));
+}
